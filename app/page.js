@@ -3,15 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Box, Stack, Typography, Button, Modal, TextField } from '@mui/material'
 import { firestore } from '@/firebase'
-import {
-  collection,
-  doc,
-  getDocs,
-  query,
-  setDoc,
-  deleteDoc,
-  getDoc,
-} from 'firebase/firestore'
+import { collection, doc, getDocs, query, setDoc, deleteDoc, getDoc,} from 'firebase/firestore'
 
 const style = {
   position: 'absolute',
@@ -129,16 +121,16 @@ export default function Home() {
             </Stack>
           </Box>
         </Modal>
-        <Typography variant='h2' color={'#33f'} textAlign={'center'}>
+        <Typography variant='h1' color={'#33f'} textAlign={'center'}>
           Pantry Tracker App
         </Typography>
         <Button variant="contained" onClick={handleOpen}>
           Add New Item
         </Button>
-        <Box border={'3px solid #33f'} borderRadius = {6}>
+        <Box border={'5px solid #33f'} borderRadius = {7} width="90%" height="60%">
           <Box
-            width="1200px"
-            height="100px"
+            width="100%"
+            height="25%"
             bgcolor={'#ADD8E6'}
             borderRadius = {5}
             border={'3px solid #33f'}
@@ -150,26 +142,25 @@ export default function Home() {
               Inventory Items
             </Typography>
           </Box>
-          <Stack width="1200px" height="350px" spacing={2} overflow={'auto'} borderRadius = {5}>
+          <Stack width="100%" height="75%" spacing={2} overflow={'auto'} borderRadius = {5}>
             {inventory.map(({name, quantity}) => (
               <Box
                 key={name}
                 width="100%"
-                minHeight="150px"
+                minHeight="125px"
                 display={'flex'}
                 justifyContent={'space-between'}
                 alignItems={'center'}
                 bgcolor={'#141414'}
                 borderRadius = {5}
-                paddingX={5}
+                paddingX= "5%"
               >
-                <Typography variant={'h3'} color={'#fff'} textAlign={'center'}>
+                <Typography variant={'h4'} color={'#fff'} textAlign={'center'}>
                   {name.charAt(0).toUpperCase() + name.slice(1)}
                 </Typography>
-                <Stack direction= "row" spacing={15}>
-                  <Typography variant={'h3'} color={'#fff'} textAlign={'center'}>
-                     Quantity: {quantity}
-                  </Typography>
+                <Typography variant={'h4'} color={'#fff'} textAlign={'center'}>
+                  Quantity: {quantity}
+                </Typography>
                   <Stack direction = "row" spacing = {3}>
                      <Button variant="contained" onClick={() => addItem(name)}>
                         Add
@@ -181,8 +172,6 @@ export default function Home() {
                         Delete
                      </Button>
                   </Stack>
-                  
-                </Stack>
               </Box>
             ))}
           </Stack>
